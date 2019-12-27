@@ -5,12 +5,7 @@ import 'dart:convert';
 
 const request = "https://api.hgbrasil.com/finance?key=36bf5c09";
 
-Future<Map> getData() async{
-  http.Response response = await http.get(request);
-  return json.decode(response.body);
-} 
-
-void main(List<String> args) async {
+void main() async {
   runApp(
     MaterialApp(
       home: Home(), 
@@ -23,6 +18,12 @@ void main(List<String> args) async {
     )
   );
 }
+
+Future<Map> getData() async{
+  http.Response response = await http.get(request);
+  return json.decode(response.body);
+} 
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -39,15 +40,15 @@ class _HomeState extends State<Home> {
   double euro;
 
   void _realChanged(String text){
-
+    print(text);
   }
 
   void _dolarChanged(String text){
-    
+    print(text);
   }
 
   void _euroChanged(String text){
-    
+    print(text);
   }
 
 
@@ -68,7 +69,7 @@ class _HomeState extends State<Home> {
             case ConnectionState.none:
             case ConnectionState.waiting:
               return Center(
-                child: Text('Carregando dados...',
+                child: Text('Carregando dadoss...',
                   style: TextStyle(
                     color: Colors.amber,
                     fontSize: 25.0
@@ -121,6 +122,7 @@ buildTextFild(String label, String prefix, TextEditingController controllerInput
       labelStyle: TextStyle(color: Colors.amber),
       border: OutlineInputBorder(),
       prefixText: prefix,
+      prefixStyle: TextStyle(color: Colors.amber),
     ),
     style: TextStyle(
       color: Colors.amber, fontSize: 25,
